@@ -13,6 +13,7 @@
 		8A5C612128352DFD0004C4E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5C611F28352DFD0004C4E9 /* Main.storyboard */; };
 		8A5C612328352DFE0004C4E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A5C612228352DFE0004C4E9 /* Assets.xcassets */; };
 		8A5C612628352DFE0004C4E9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8A5C612428352DFE0004C4E9 /* LaunchScreen.storyboard */; };
+		8A5C612E28352E890004C4E9 /* VkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5C612D28352E890004C4E9 /* VkViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		8A5C612228352DFE0004C4E9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A5C612528352DFE0004C4E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8A5C612728352DFE0004C4E9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A5C612D28352E890004C4E9 /* VkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				8A5C611B28352DFD0004C4E9 /* SceneDelegate.swift */,
 				8A5C611D28352DFD0004C4E9 /* ViewController.swift */,
 				8A5C611F28352DFD0004C4E9 /* Main.storyboard */,
+				8A5C612D28352E890004C4E9 /* VkViewController.swift */,
 				8A5C612228352DFE0004C4E9 /* Assets.xcassets */,
 				8A5C612428352DFE0004C4E9 /* LaunchScreen.storyboard */,
 				8A5C612728352DFE0004C4E9 /* Info.plist */,
@@ -139,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5C611E28352DFD0004C4E9 /* ViewController.swift in Sources */,
+				8A5C612E28352E890004C4E9 /* VkViewController.swift in Sources */,
 				8A5C611A28352DFD0004C4E9 /* AppDelegate.swift in Sources */,
 				8A5C611C28352DFD0004C4E9 /* SceneDelegate.swift in Sources */,
 			);
