@@ -9,45 +9,32 @@ import UIKit
 
 class VkViewController: UIViewController {
 
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+
     // MARK: - Elements
-    private lazy var labelCounter: UILabel = {
-        var label = UILabel()
+    private lazy var avatarView: UIImageView = {
+
+        let avatar = UIImage(named: "avatar.jpg")
+        var view = UIImageView()
+        view.image = avatar
+
+        view.clipsToBounds = true
+        view.layer.cornerRadius = Metric.avatarHeight / 2
+
+        return view
+    }()
+
+    private lazy var nameLabel: UILabel = {
+
+        let label = UILabel()
         label.textColor = .white
-        // label.font = .systemFont(ofSize: 70)
-        label.font = .monospacedDigitSystemFont(ofSize: 100, weight: .thin)
-        label.text = "00:00,00"
+        label.font = .systemFont(ofSize: Metric.nameLabelFontSize, weight: .regular)
+        label.text = Texts.nameText
+
         return label
     }()
-
-    private lazy var buttonCircleLeft: UIButton = {
-
-        var button = UIButton(type: .system)
-        button.titleLabel?.font = .systemFont(ofSize: 25)
-        button.setTitle("Круг", for: .normal)
-        //        button.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-
-        button.setTitleColor(.lightGray, for: .normal)
-
-        button.layer.borderWidth = 2
-        button.layer.borderColor = UIColor.black.cgColor
-
-        button.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
-        button.layer.cornerRadius = 50
-        button.clipsToBounds = true
-
-        return button
-    }()
-
-    private lazy var subButtonCircleLeft: UIView = {
-
-        var button = UIView()
-        button.backgroundColor = #colorLiteral(red: 0.1298420429, green: 0.1298461258, blue: 0.1298439503, alpha: 1)
-        button.layer.cornerRadius = 54
-        button.clipsToBounds = true
-
-        return button
-    }()
-
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,23 +47,39 @@ class VkViewController: UIViewController {
 
     //    MARK: - Settings
     private func setupView() {
-        view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        view.backgroundColor = .black
+        
     }
 
     private func setupHierarchy() {
-        view.addSubview(labelCounter)
-        view.addSubview(subButtonCircleLeft)
+        view.addSubview(avatarView)
+        view.addSubview(nameLabel)
 
     }
 
     private func setupLayout() {
-        labelCounter.translatesAutoresizingMaskIntoConstraints = false
-        labelCounter.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        labelCounter.topAnchor.constraint(equalTo: view.topAnchor, constant: 130).isActive = true
+        avatarView.translatesAutoresizingMaskIntoConstraints = false
+        avatarView.topAnchor.constraint(equalTo: view.topAnchor, constant: 80).isActive = true
+        avatarView.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        nameLabel.bottomAnchor.constraint(equalTo: avatarView.centerYAnchor, constant: -10).isActive = true
+        nameLabel.leftAnchor.constraint(equalTo: avatarView.rightAnchor, constant: 20).isActive = true
+
+}
+}
+
+// MARK: - Constants
+extension VkViewController {
+
+    enum Metric {
+
+        static let avatarHeight: CGFloat = 78
+        static let nameLabelFontSize: CGFloat = 25
+    }
+
+    enum Texts {
+        static let nameText = "Дмитрий Донской"
     }
 }
 
-//MARK: - Constants
-extension ViewController {
-
-}
