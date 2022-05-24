@@ -121,7 +121,7 @@ class VkViewController: UIViewController {
                                         fontWeight: .light,
                                         titleColor: .lightGray,
                                         backgroundColor: .clear)
-        let image = UIImage(systemName: "iphone")?.withTintColor(.lightGray, renderingMode: .alwaysOriginal)
+        let image = UIImage(systemName: "iphone")?.withTintColor(.lightGray, renderingMode: .alwaysTemplate)
         button.setImage(image, for: .normal)
         button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 14), forImageIn: .normal)
         button.semanticContentAttribute = .forceRightToLeft
@@ -171,6 +171,7 @@ class VkViewController: UIViewController {
                                                              tintColor: #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                              padding: 10,
                                                              imagePlacement: .top,
+                                                               imageSize: 15,
                                                              title: "История",
                                                                fontSize: Metric.icomMenuFontSize,
                                                              fontWeight: .light,
@@ -190,6 +191,7 @@ class VkViewController: UIViewController {
                                                                tintColor: #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                                padding: 10,
                                                                imagePlacement: .top,
+                                                              imageSize: 15,
                                                                title: "Запись",
                                                                fontSize: Metric.icomMenuFontSize,
                                                                fontWeight: .light,
@@ -208,6 +210,7 @@ class VkViewController: UIViewController {
                                                               tintColor: #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                               padding: 10,
                                                               imagePlacement: .top,
+                                                              imageSize: 15,
                                                               title: "Фото",
                                                               fontSize: Metric.icomMenuFontSize,
                                                               fontWeight: .light,
@@ -226,6 +229,7 @@ class VkViewController: UIViewController {
                                                               tintColor: #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                               padding: 10,
                                                               imagePlacement: .top,
+                                                             imageSize: 15,
                                                               title: "Клип",
                                                               fontSize: Metric.icomMenuFontSize,
                                                               fontWeight: .light,
@@ -235,8 +239,9 @@ class VkViewController: UIViewController {
 
     private lazy var cityButton = createImageandStringButton(systemImage: "house",
                                                              tintColor: .gray,
-                                                             padding: 15,
+                                                             padding: 11,
                                                              imagePlacement: .leading,
+                                                             imageSize: 15,
                                                              title: "Город: Ростов",
                                                              fontSize: 20,
                                                              fontWeight: .light,
@@ -245,8 +250,9 @@ class VkViewController: UIViewController {
 
     private lazy var subscribersButton = createImageandStringButton(systemImage: "dot.radiowaves.up.forward",
                                                              tintColor: .gray,
-                                                             padding: 21,
+                                                             padding: 15,
                                                              imagePlacement: .leading,
+                                                                    imageSize: 18,
                                                              title: "69 подписчиков",
                                                              fontSize: 20,
                                                              fontWeight: .light,
@@ -257,6 +263,7 @@ class VkViewController: UIViewController {
                                                                   tintColor: #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                                     padding: 15,
                                                                     imagePlacement: .leading,
+                                                                  imageSize: 13,
                                                                     title: "Указать место работы",
                                                                     fontSize: 20,
                                                                     fontWeight: .light,
@@ -265,8 +272,9 @@ class VkViewController: UIViewController {
 
     private lazy var getGiftButton = createImageandStringButton(systemImage: "snowflake",
                                                                   tintColor: #colorLiteral(red: 0.4456846118, green: 0.3789182901, blue: 0.7340885401, alpha: 1),
-                                                                  padding: 19,
+                                                                  padding: 16,
                                                                   imagePlacement: .leading,
+                                                                imageSize: 17,
                                                                   title: "Получить подарок",
                                                                   fontSize: 20,
                                                                   fontWeight: .light,
@@ -277,6 +285,7 @@ class VkViewController: UIViewController {
                                                                 tintColor: .white,
                                                                 padding: 16,
                                                                 imagePlacement: .leading,
+                                                             imageSize: 15,
                                                                 title: "Подробная информация",
                                                                 fontSize: 20,
                                                                 fontWeight: .light,
@@ -364,6 +373,7 @@ class VkViewController: UIViewController {
                                              tintColor: UIColor,
                                              padding: CGFloat,
                                              imagePlacement: NSDirectionalRectEdge,
+                                             imageSize: CGFloat,
                                              title: String,
                                              fontSize: CGFloat,
                                              fontWeight: UIFont.Weight,
@@ -381,8 +391,12 @@ class VkViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: fontSize, weight: fontWeight)
         button.backgroundColor = backgroundColor
 
-        let image = UIImage(systemName: systemImage)?.withTintColor(tintColor, renderingMode: .alwaysOriginal)
+        let font = UIFont.systemFont(ofSize: imageSize) // <- make it larger, smaller, whatever you want.
+        let imageConfig = UIImage.SymbolConfiguration(font: font)
+
+        let image = UIImage(systemName: systemImage, withConfiguration: imageConfig)?.withTintColor(tintColor, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
+
 
         return button
     }
