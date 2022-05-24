@@ -48,7 +48,7 @@ class VkViewController: UIViewController {
         let stackView = UIStackView()
 
         stackView.axis = .horizontal
-        stackView.distribution = .equalCentering
+        stackView.distribution = .fillProportionally
         stackView.alignment = .leading
 
         return stackView
@@ -174,7 +174,7 @@ class VkViewController: UIViewController {
                                                                imageSize: 15,
                                                              title: "История",
                                                                fontSize: Metric.icomMenuFontSize,
-                                                             fontWeight: .light,
+                                                               fontWeight: .ultraLight,
                                                              titleColor:  #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                              backgroundColor: .clear)
 
@@ -187,7 +187,7 @@ class VkViewController: UIViewController {
 //        return button
 //    }()
 
-    private lazy var writeButton = createImageandStringButton(systemImage: "square.and.pencil",
+    private lazy var writeButton = createImageandStringButton(systemImage: "person.text.rectangle",
                                                                tintColor: #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                                padding: 10,
                                                                imagePlacement: .top,
@@ -391,12 +391,11 @@ class VkViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: fontSize, weight: fontWeight)
         button.backgroundColor = backgroundColor
 
-        let font = UIFont.systemFont(ofSize: imageSize) // <- make it larger, smaller, whatever you want.
-        let imageConfig = UIImage.SymbolConfiguration(font: font)
+    let font = UIFont.systemFont(ofSize: imageSize) // <- make it larger, smaller, whatever you want.
+       let imageConfig = UIImage.SymbolConfiguration(font: font)
 
         let image = UIImage(systemName: systemImage, withConfiguration: imageConfig)?.withTintColor(tintColor, renderingMode: .alwaysOriginal)
         button.setImage(image, for: .normal)
-
 
         return button
     }
@@ -412,7 +411,7 @@ extension VkViewController {
 
         static let avatarHeight: CGFloat = 78
         static let nameLabelFontSize: CGFloat = 20
-        static let icomMenuFontSize: CGFloat = 14
+        static let icomMenuFontSize: CGFloat = 13
         static let parentStackViewSpacing: CGFloat = 20
         static let topAvatarStatusStackViewSpacing: CGFloat = 10
         static let menuStackSpacing: CGFloat = 12
