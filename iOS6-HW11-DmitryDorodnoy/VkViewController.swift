@@ -48,7 +48,7 @@ class VkViewController: UIViewController {
         let stackView = UIStackView()
 
         stackView.axis = .horizontal
-        stackView.distribution = .fillProportionally
+        stackView.distribution = .equalCentering
         stackView.alignment = .leading
 
         return stackView
@@ -167,25 +167,24 @@ class VkViewController: UIViewController {
 //        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25), forImageIn: .normal)
 //        return button
 //    }()
-    private lazy var cameraButton = createImageandStringButton(systemImage: "camera",
+    private lazy var cameraButton: UIButton = {
+
+        let button = createImageandStringButton(systemImage: "camera",
                                                              tintColor: #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                              padding: 10,
                                                              imagePlacement: .top,
                                                                imageSize: 15,
                                                              title: "История",
                                                                fontSize: Metric.icomMenuFontSize,
-                                                               fontWeight: .ultraLight,
+                                                               fontWeight: .light,
                                                              titleColor:  #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
                                                              backgroundColor: .clear)
 
 
-//    private lazy var writeButton: UIButton = {
-//        let button = UIButton()
-//        let image = UIImage(systemName: "square.and.pencil")?.withTintColor( #colorLiteral(red: 0.4233195782, green: 0.6811253428, blue: 0.9225201011, alpha: 1), renderingMode: .alwaysOriginal)
-//        button.setImage(image, for: .normal)
-//        button.setPreferredSymbolConfiguration(UIImage.SymbolConfiguration(pointSize: 25), forImageIn: .normal)
-//        return button
-//    }()
+
+        return button
+    }()
+
 
     private lazy var writeButton = createImageandStringButton(systemImage: "person.text.rectangle",
                                                                tintColor: #colorLiteral(red: 0.4235439897, green: 0.6808486581, blue: 0.9224407673, alpha: 1),
@@ -384,11 +383,19 @@ class VkViewController: UIViewController {
         var config = UIButton.Configuration.plain()
         config.imagePadding = padding
         config.imagePlacement = imagePlacement
+
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+            outgoing.font = UIFont.systemFont(ofSize: fontSize, weight: fontWeight)
+            return outgoing
+        }
+
         button.configuration = config
 
         button.setTitle(title, for: .normal)
         button.setTitleColor(titleColor, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: fontSize, weight: fontWeight)
+
+//        button.titleLabel?.font = .systemFont(ofSize: fontSize, weight: fontWeight)
         button.backgroundColor = backgroundColor
 
     let font = UIFont.systemFont(ofSize: imageSize) // <- make it larger, smaller, whatever you want.
@@ -411,7 +418,7 @@ extension VkViewController {
 
         static let avatarHeight: CGFloat = 78
         static let nameLabelFontSize: CGFloat = 20
-        static let icomMenuFontSize: CGFloat = 13
+        static let icomMenuFontSize: CGFloat = 15
         static let parentStackViewSpacing: CGFloat = 20
         static let topAvatarStatusStackViewSpacing: CGFloat = 10
         static let menuStackSpacing: CGFloat = 12
